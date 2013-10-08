@@ -19,13 +19,12 @@ To `composer.json`:
         }
     ]
 }
+```
 
 To `AppKernel`:
 
 ```php
 new Pv\MyBundle\PvMyBundle(),
-```
-
 ```
 
 Bootstrap forms
