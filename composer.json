@@ -1,0 +1,11 @@
+{
+    "name": "pv/my",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "symfony/symfony": "2.3.*",
+        "doctrine/mongodb-odm": "1.0.*@dev",
+        "doctrine/mongodb-odm-bundle": "3.0.*@dev"
+    }
+}
