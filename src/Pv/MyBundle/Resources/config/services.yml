@@ -1,0 +1,11 @@
+services:
+    pv.html_helper:
+        class: Pv\MyBundle\Templating\HtmlHelper
+        arguments:
+            - @service_container
+    pv.twig_extension:
+        class: Pv\MyBundle\Templating\TwigExtension
+        arguments:
+            - @pv.html_helper
+        tags:
+            - { name: twig.extension }

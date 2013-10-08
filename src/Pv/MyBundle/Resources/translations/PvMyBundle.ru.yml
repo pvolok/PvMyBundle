@@ -1,0 +1,6 @@
+date:
+    format:
+        minutes_ago: %count% минуту назад|%count% минуты назад|%count% минут назад|{0} только что|{1} минуту назад
+        hours_ago: %count% час назад|%count% часа назад|%count% часов назад|{1} час назад
+        days_ago: %count% день назад|%count% дня назад|%count% дней назад
+        format: j.m.Y
