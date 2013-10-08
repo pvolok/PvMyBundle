@@ -1,5 +1,5 @@
 {
-    "name": "pv/my",
+    "name": "pv/my-bundle",
     "autoload": {
         "psr-0": { "": "src/" }
     },

@@ -1,6 +1,33 @@
 PvMyBundle
 ==========
 
+Installation
+------------
+
+To `composer.json`:
+
+
+```json
+{
+    "require": {
+        "pv/my-bundle": "*@dev"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:pvolok/PvMyBundle.git"
+        }
+    ]
+}
+
+To `AppKernel`:
+
+```php
+new Pv\MyBundle\PvMyBundle(),
+```
+
+```
+
 Bootstrap forms
 ---------------
 
