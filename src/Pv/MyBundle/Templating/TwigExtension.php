@@ -18,6 +18,13 @@ class TwigExtension extends \Twig_Extension
         );
     }
 
+    public function getFunctions()
+    {
+        return array(
+            new \Twig_SimpleFunction('pv_svc', array($this->html, 'svc')),
+        );
+    }
+
     public function getName()
     {
         return 'pv';

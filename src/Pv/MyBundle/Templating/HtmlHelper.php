@@ -9,12 +9,12 @@ class HtmlHelper
 {
     private $container;
 
-    function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
-    function formatDate($date)
+    public function formatDate($date)
     {
         /** @var TranslatorInterface $trans */
         $trans = $this->container->get('translator');
@@ -41,5 +41,10 @@ class HtmlHelper
         }
 
         return date($trans->trans('date.format.format', array(), 'PvMyBundle'), $date);
+    }
+
+    public function svc($id)
+    {
+        return $this->container->get($id);
     }
 }
