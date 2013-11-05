@@ -2,6 +2,7 @@
 
 namespace Pv\MyBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -20,10 +21,25 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('pv_my');
 
+        $this->addGenConfig($rootNode);
+
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
 
         return $treeBuilder;
+    }
+
+    private function addGenConfig(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('gen')
+                    ->canBeEnabled()
+                    ->children()
+                        ->scalarNode('path')->isRequired()->end()
+                    ->end()
+                ->end()
+            ->end();
     }
 }

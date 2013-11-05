@@ -1,0 +1,3 @@
+services:
+    pv.gen.helper:
+        class: Pv\MyBundle\Gen\GenHelper

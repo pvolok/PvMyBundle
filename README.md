@@ -37,3 +37,16 @@ twig:
     form:
         resources: [ 'PvMyBundle:Form:fields.html.twig' ]
 ```
+
+Gen helper
+----------
+
+Helper for generated files.
+
+Add following to `config.yml`:
+
+```yaml
+pv_my:
+    gen:
+        path: /path/to/gen
+```

@@ -24,5 +24,10 @@ class PvMyExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        if ($config['gen']['enabled']) {
+            $loader->load('gen.yml');
+            $container->getDefinition('pv.gen.helper')->addArgument($config['gen']['path']);
+        }
     }
 }
