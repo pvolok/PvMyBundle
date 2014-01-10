@@ -19,6 +19,17 @@ class BaseController extends Controller
         return $this->get('doctrine.odm.mongodb.document_manager');
     }
 
+    protected function findOrThrow($documentName, $id, $msg = 'Not Found')
+    {
+        $obj = $this->getDM()->find($documentName, $id);
+
+        if (!$obj) {
+            throw $this->createNotFoundException($msg);
+        }
+
+        return $obj;
+    }
+
     protected function addFlashMessage($type, $message)
     {
         /** @var Session $session */
