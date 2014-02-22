@@ -8,6 +8,14 @@
 {% endspaceless %}
 {% endblock %}
 
+{% block checkbox_row %}
+    {{ form_errors(form) }}
+    <label class="checkbox{{ form.vars.required ? ' required' }}">
+        {{ form_widget(form) }}
+        {{ form.vars.label|trans({}, form.vars.translation_domain) }}
+    </label>
+{% endblock %}
+
 {% block button_row %}
     {{ form_widget(form, { attr: { class: attr.class is defined ? attr.class : 'btn btn-primary' } }) }}
     &nbsp;
