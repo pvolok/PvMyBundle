@@ -29,5 +29,15 @@ class PvMyExtension extends Extension
             $loader->load('gen.yml');
             $container->getDefinition('pv.gen.helper')->addArgument($config['gen']['path']);
         }
+
+        if ($config['mongo_session']['enabled']) {
+            $loader->load('mongo_session.yml');
+
+            $container->getDefinition('pv.mongo_session.handler')->addArgument(
+                array(
+                    'database' => $config['mongo_session']['database'],
+                    'collection' => $config['mongo_session']['collection'],
+                ));
+        }
     }
 }

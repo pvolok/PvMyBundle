@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('pv_my');
 
         $this->addGenConfig($rootNode);
+        $this->addMongoSessionConfig($rootNode);
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
@@ -38,6 +39,20 @@ class Configuration implements ConfigurationInterface
                     ->canBeEnabled()
                     ->children()
                         ->scalarNode('path')->isRequired()->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+
+    private function addMongoSessionConfig(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('mongo_session')
+                    ->canBeEnabled()
+                    ->children()
+                        ->scalarNode('database')->isRequired()->end()
+                        ->scalarNode('collection')->defaultValue('session')->end()
                     ->end()
                 ->end()
             ->end();

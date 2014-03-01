@@ -1,0 +1,16 @@
+services:
+    pv.mongo_session.handler:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MongoDbSessionHandler
+        arguments:
+            - @pv.mongo_session.mongo
+
+    pv.mongo_session.connection:
+        class: MongoDoctrine\MongoDB\Connection
+        factory_service: doctrine.odm.mongodb.document_manager
+        factory_method: getConnection
+        calls:
+           - [ initialize, [] ]
+    pv.mongo_session.mongo:
+        class: Mongo
+        factory_service: pv.mongo_session.connection
+        factory_method: getMongo

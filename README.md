@@ -50,3 +50,18 @@ pv_my:
     gen:
         path: /path/to/gen
 ```
+
+MongoDB session handler
+----------------------
+
+Add following to `config.yml`:
+
+```yaml
+framework:
+    session:
+        handler_id:  pv.mongo_session.handler
+
+pv_my:
+    mongo_session:
+        database: db_name
+```
