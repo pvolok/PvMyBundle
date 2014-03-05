@@ -3,6 +3,7 @@
 namespace Pv\MyBundle\Controller;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
+use Pv\MyBundle\Helper\HH;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -11,6 +12,14 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class BaseController extends Controller
 {
+    /**
+     * @return HH
+     */
+    protected function hh()
+    {
+        return $this->get('pv.hh');
+    }
+
     /**
      * @return DocumentManager
      */

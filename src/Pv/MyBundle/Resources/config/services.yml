@@ -1,4 +1,9 @@
 services:
+    pv.hh:
+        class: Pv\MyBundle\Helper\HH
+        arguments:
+            - @service_container
+
     pv.html_helper:
         class: Pv\MyBundle\Templating\HtmlHelper
         arguments:
