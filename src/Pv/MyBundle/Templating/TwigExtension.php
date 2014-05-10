@@ -21,6 +21,8 @@ class TwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
+            new \Twig_SimpleFunction('pv_link', array($this->html, 'link'),
+                array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('pv_svc', array($this->html, 'svc')),
         );
     }

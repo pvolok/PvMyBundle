@@ -3,6 +3,7 @@
 namespace Pv\MyBundle\Templating;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class HtmlHelper
@@ -41,6 +42,25 @@ class HtmlHelper
         }
 
         return date($trans->trans('date.format.format', array(), 'PvMyBundle'), $date);
+    }
+
+    public function link($url, $label, $attrs = array(), $tokenId = 'pv_def')
+    {
+        /** @var CsrfTokenManagerInterface $csrfTokenManager */
+        $csrfTokenManager = $this->container->get('security.csrf.token_manager');
+        $csrf = $csrfTokenManager->getToken($tokenId)->getValue();
+
+        $html = "<form action='$url' method='post' style='display: inline-block'>";
+        $html .= '<input type="hidden" name="token_" value="'.$csrf.'">';
+        $html .= '<button';
+        $attrs['type'] = 'submit';
+        foreach ($attrs as $attr => $value) {
+            $html .= ' '.$attr.'="'.htmlentities($value).'"';
+        }
+        $html .= '>'.$label.'</button>';
+        $html .= '</form>';
+
+        return $html;
     }
 
     public function svc($id)

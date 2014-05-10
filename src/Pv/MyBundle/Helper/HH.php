@@ -17,6 +17,8 @@ class HH
 
     public function csrfIsValid($id, $value)
     {
+        $id = $id ?: 'pv_def';
+
         /** @var CsrfTokenManagerInterface $csrfTokenManager */
         $csrfTokenManager = $this->container->get('security.csrf.token_manager');
 
