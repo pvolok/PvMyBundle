@@ -3,6 +3,7 @@
 namespace Pv\MyBundle\Controller;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
+use Pv\MyBundle\Helper\CC;
 use Pv\MyBundle\Helper\HH;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormBuilder;
@@ -18,6 +19,14 @@ class BaseController extends Controller
     protected function hh()
     {
         return $this->get('pv.hh');
+    }
+
+    /**
+     * @return CC
+     */
+    protected function cc()
+    {
+        return $this->get('pv.cc');
     }
 
     /**
