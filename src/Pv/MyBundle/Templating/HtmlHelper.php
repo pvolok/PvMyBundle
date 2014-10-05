@@ -2,6 +2,7 @@
 
 namespace Pv\MyBundle\Templating;
 
+use Pv\MyBundle\PageletLib\PageletManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -38,13 +39,14 @@ class HtmlHelper
 
         if (isset($msg, $count)) {
             return $trans->transChoice($msg, $count,
-                array('%count%' => $count), 'PvMyBundle');
+                ['%count%' => $count], 'PvMyBundle');
         }
 
-        return date($trans->trans('date.format.format', array(), 'PvMyBundle'), $date);
+        return date($trans->trans('date.format.format', [], 'PvMyBundle'),
+            $date);
     }
 
-    public function link($url, $label, $attrs = array(), $tokenId = 'pv_def')
+    public function link($url, $label, $attrs = [], $tokenId = 'pv_def')
     {
         /** @var CsrfTokenManagerInterface $csrfTokenManager */
         $csrfTokenManager = $this->container->get('security.csrf.token_manager');
@@ -66,5 +68,12 @@ class HtmlHelper
     public function svc($id)
     {
         return $this->container->get($id);
+    }
+
+    public function pagelet($name, $args = [])
+    {
+        /** @var PageletManager $pm */
+        $pm = $this->container->get('pv.pagelet_manager');
+        return $pm->render($name, $args);
     }
 }

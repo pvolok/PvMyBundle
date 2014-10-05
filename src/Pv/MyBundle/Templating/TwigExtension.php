@@ -14,16 +14,18 @@ class TwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('pv_date', array($this->html, 'formatDate')),
+            new \Twig_SimpleFilter('pv_date', [$this->html, 'formatDate']),
         );
     }
 
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('pv_link', array($this->html, 'link'),
-                array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('pv_svc', array($this->html, 'svc')),
+            new \Twig_SimpleFunction('pv_link', [$this->html, 'link'],
+                ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('pv_svc', [$this->html, 'svc']),
+            new \Twig_SimpleFunction('pv_pagelet', [$this->html, 'pagelet'],
+                ['is_safe' => ['html']]),
         );
     }
 
