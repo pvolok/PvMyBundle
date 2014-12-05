@@ -64,11 +64,6 @@ class BaseController extends Controller
         return $translator->trans($id, $parameters, $domain, $locale);
     }
 
-    protected function isGranted($attributes)
-    {
-        return $this->get('security.context')->isGranted($attributes, $object = null);
-    }
-
     protected function secure($attributes)
     {
         if (!$this->isGranted($attributes)) {
