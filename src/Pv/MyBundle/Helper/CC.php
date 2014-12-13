@@ -15,6 +15,19 @@ class CC
         $this->container = $container;
     }
 
+    public function get($id)
+    {
+        return $this->container->get($id);
+    }
+
+    /**
+     * @return HH
+     */
+    public function hh()
+    {
+        return $this->container->get('pv.hh');
+    }
+
     /**
      * @return DocumentManager
      */
