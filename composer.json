@@ -1,7 +1,8 @@
 {
     "name": "pv/my-bundle",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": {"": "src/"},
+        "files": ["src/functions.php"]
     },
     "require": {
         "symfony/symfony": "~2.3",
